@@ -2,7 +2,7 @@
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import { HeroUIProvider } from "@heroui/react";
-import { Chat, Inputs, SignUp } from "@/components/index";
+import { Chat, Inputs, SignUp } from "@/components";
 
 const server = io(
   "https://humble-chainsaw-pp49xwx749j26w9w-3001.app.github.dev/"

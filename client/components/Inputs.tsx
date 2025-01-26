@@ -11,6 +11,7 @@ function Inputs() {
         label="Enter your message"
         type="text"
         value={input}
+        autoComplete="off"
         size="md"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setInput(e.target.value)
