@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
   socket.on("btn_clicked", (data) => {
     console.log(data);
 
-    socket.emit("server_event", getAnimal());
+    io.emit("server_event", getAnimal());
   });
 });
 
