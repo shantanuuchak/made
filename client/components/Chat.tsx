@@ -1,14 +1,18 @@
 import { Avatar, Card, CardBody } from "@heroui/react";
+import NewUser from "./NewUser";
 
 function Chat() {
   return <div className="grid gap-2">
     <Message>Make beautiful websites regardless of your design experience.</Message>
     <Message self>Make beautiful websites regardless of your design experience.</Message>
-    <Message self>I think I've already told ya!</Message>
-    <Message self>Please go and find yourself a job.</Message>
-    <Message self>Please go and find yourself a job.</Message>
     <Message self>Please go and find yourself a job.</Message>
     <Message>Whatever you tell me I'm not into such business.</Message>
+    <Message>Whatever you tell me I'm not into such business.</Message>
+    <NewUser name="Ben 10" />
+    <Message>Whatever you tell me I'm not into such business.</Message>
+    <Message self>Please go and find yourself a job.</Message>
+    <Message self>Please go and find yourself a job.</Message>
+
   </div>;
 }
 
