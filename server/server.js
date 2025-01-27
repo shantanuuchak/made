@@ -5,7 +5,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.get("/", (req, res) => {
-  res.json("Service is active!")
+  res.send("Service is active!")
 })
 
 const { Server } = require("socket.io");
