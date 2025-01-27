@@ -16,7 +16,7 @@ function Inputs() {
   }
 
   return (
-    <form className="flex gap-1" onSubmit={(e: FormEvent) => e.preventDefault()}>
+    <form className="flex gap-1 bottom-0 left-0 w-full absolute mb-10 max-w-5xl left-1/2 -translate-x-1/2 " onSubmit={(e: FormEvent) => e.preventDefault()}>
       <Input
         label="Enter your message"
         type="text"

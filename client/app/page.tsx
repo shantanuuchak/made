@@ -5,7 +5,7 @@ import { HeroUIProvider } from "@heroui/react";
 import { Chat, Inputs, SignUp } from "@/components";
 
 const server = io(
-  "https://humble-chainsaw-pp49xwx749j26w9w-3001.app.github.dev/"
+  "https://metropolitan-cherin-chak-7831167c.koyeb.app/"
 );
 
 export default function Home() {
@@ -23,7 +23,8 @@ export default function Home() {
 
   return (
     <HeroUIProvider>
-      <div className="min-h-screen max-h-screen max-w-screen mx-auto md:container md:p-20 md:pt-4 p-1">
+      <div className="min-h-screen max-h-screen max-w-screen mx-auto md:container md:p-20 md:pt-4 p-1 relative">
+        <Chat />
         <Inputs />
       </div>
     </HeroUIProvider>
