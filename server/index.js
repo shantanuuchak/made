@@ -11,21 +11,22 @@ const io = new Server(server, {
   },
 });
 
-const getAnimal = () => {
-  const animals = ["🐎", "🦁", "🫎", "🐕", "🐈", "🐇"];
-  return animals[Math.floor(Math.random() * animals.length)];
-};
-
 io.on("connection", (socket) => {
   console.log("A user connected", socket.id);
 
-  socket.on("btn_clicked", (data) => {
-    console.log(data);
-
-    socket.emit.broadcast("server_event", getAnimal());
+  socket.on("send_message", (message) => {
+    socket.broadcast.emit("recieve_message", message)
   });
+
+  socket.on('user_typing', (data) => {
+    socket.broadcast.emit("user_typing", data)
+  })
+
+  socket.on('new_user', (data) => {
+    socket.broadcast.emit('new_user', data)
+  })
 });
 
 server.listen(3001, () => {
-  console.log("Server is running on port 3001");
+  console.log("Server is running on port 5000");
 });
