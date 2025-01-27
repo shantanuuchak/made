@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "bun --watch server.js",
+    "start": "bun server.js"
   },
   "keywords": [],
   "author": "",
