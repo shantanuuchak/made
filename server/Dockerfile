@@ -4,6 +4,6 @@ COPY . .
 RUN bun install
  
 ARG PORT
-EXPOSE ${PORT:-3000}
+EXPOSE ${PORT:-8000}
  
 CMD ["bun", "server.js"]
