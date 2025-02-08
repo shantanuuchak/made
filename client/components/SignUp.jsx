@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import { useEffect } from "react";
 
-export default function SignUp({ onSubmit }) {
+export default function SignUp({ onSubmit, socket }) {
   useEffect(() => {
     const session = sessionStorage.getItem("user");
     if (session) {
@@ -26,6 +26,7 @@ export default function SignUp({ onSubmit }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     sessionStorage.setItem("user", data.name);
 
+    socket.emit("user", data.name);
     onSubmit(data.name);
   };
 

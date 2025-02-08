@@ -9,6 +9,7 @@ const socket = io("http://localhost:8000");
 export default function Home() {
   const [user, setUser] = useState("");
   const [messages, setMessages] = useState([]);
+  const [newUsers, setNewUser] = useState([]);
 
   useEffect(() => {
     socket.on("recieve_message", (data) => {
@@ -16,15 +17,21 @@ export default function Home() {
     });
   }, []);
 
+  useEffect(() => {
+    socket.on("new_user", (data) => {
+      setNewUser((prevState) => [...prevState, data]);
+    });
+  }, []);
+
   return (
     <HeroUIProvider>
       {user ? (
         <div className="min-h-screen max-h-screen max-w-screen mx-auto md:container md:p-20 md:pt-4 p-1 relative">
-          <Chat messages={messages} socket={socket} />
+          <Chat messages={messages} socket={socket} newUsers={newUsers} />
           <Inputs user={user} socket={socket} setMessages={setMessages} />
         </div>
       ) : (
-        <SignUp onSubmit={setUser} />
+        <SignUp onSubmit={setUser} socket={socket} />
       )}
     </HeroUIProvider>
   );

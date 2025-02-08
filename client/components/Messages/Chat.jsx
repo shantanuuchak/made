@@ -1,23 +1,26 @@
 import { Avatar, Card, CardBody, Image } from "@heroui/react";
 import NewUser from "./NewUser";
 
-function Chat({ messages, socket }) {
+function Message({ messages, socket, newUsers }) {
   return (
     <div className="grid gap-2">
-      {messages.map((message, index) => (
-        <Message
-          key={index}
+      {messages.map((message, idx) => (
+        <Chat
+          key={idx}
           type={message.type}
           content={message.content}
           name={message.user.name.toUpperCase().split(" ")[0]}
           self={socket.id === message.user.id}
         />
       ))}
+      {newUsers.map((user, idx) => (
+        <NewUser key={idx} name={user} />
+      ))}
     </div>
   );
 }
 
-function Message({ type, content, self, name }) {
+function Chat({ type, content, self, name }) {
   console.log(content);
   return (
     <Card className={`w-fit bg-transparent ${self && "bg-blue-100 ml-auto"}`}>
@@ -33,4 +36,4 @@ function Message({ type, content, self, name }) {
   );
 }
 
-export default Chat;
+export default Message;
