@@ -20,6 +20,7 @@ io.on("connection", (socket) => {
   console.log("A new user connected", socket.id);
 
   socket.on("message", (message) => {
+    console.log("recieved new message");
     socket.broadcast.emit("recieve_message", message)
   });
 
