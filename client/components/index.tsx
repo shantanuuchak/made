@@ -1,6 +1,6 @@
 // Barrel file for components
 import Inputs from "./Inputs";
-import Chat from "./Chat";
 import SignUp from "./SignUp";
+import { Chat, Messages, NewUser, Typing } from './Messages'
 
-export { Inputs, Chat, SignUp };
+export { Inputs, Chat, Messages, NewUser, Typing, SignUp };
