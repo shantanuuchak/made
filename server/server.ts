@@ -1,14 +1,15 @@
-const http = require("http");
-const express = require("express");
+import http from "http";
+import express from "express";
+import { Server } from "socket.io";
+
 
 const app = express();
 const server = http.createServer(app);
 
 app.get("/", (req, res) => {
-  res.send("Service is active!")
+  res.send("Socket.io service is active!")
 })
 
-const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -16,17 +17,17 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("A user connected", socket.id);
+  console.log("A new user connected", socket.id);
 
-  socket.on("send_message", (message) => {
+  socket.on("message", (message) => {
     socket.broadcast.emit("recieve_message", message)
   });
 
-  socket.on('user_typing', (data) => {
+  socket.on('typing', (data) => {
     socket.broadcast.emit("user_typing", data)
   })
 
-  socket.on('new_user', (data) => {
+  socket.on('user', (data) => {
     socket.broadcast.emit('new_user', data)
   })
 });

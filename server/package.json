@@ -1,10 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "dev": "bun --watch server.js",
-    "start": "bun server.js"
+    "dev": "bun --watch server.ts",
+    "start": "bun server.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
     "express": "^4.21.2",
     "nodemon": "^3.1.9",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
   }
 }
