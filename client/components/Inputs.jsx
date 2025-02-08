@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import { Button, Input } from "@heroui/react";
-import { SendHorizonalIcon, UploadIcon } from "lucide-react";
+import { ImageUpIcon, UploadIcon } from "lucide-react";
 
 function Inputs() {
   const inputUpload = useRef(null);
+
   const [input, setInput] = useState();
 
   const handleSubmit = () => {
@@ -34,7 +35,7 @@ function Inputs() {
         onPress={handleSubmit}
         type="submit"
       >
-        {!input ? <UploadIcon /> : <SendHorizonalIcon />}
+        {!input ? <UploadIcon /> : <ImageUpIcon />}
       </Button>
     </form>
   );

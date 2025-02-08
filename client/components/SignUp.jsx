@@ -10,12 +10,21 @@ import {
   Link,
   Image,
 } from "@heroui/react";
+import { useEffect } from "react";
 
 export default function SignUp({ onSubmit }) {
+  useEffect(() => {
+    const session = sessionStorage.getItem("user");
+    if (session) {
+      onSubmit(session);
+    }
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.currentTarget));
+    sessionStorage.setItem("user", data.name);
 
     onSubmit(data.name);
   };
@@ -36,9 +45,7 @@ export default function SignUp({ onSubmit }) {
             <p className="text-small text-default-500">made.phleebs.com</p>
           </div>
         </CardHeader>
-
         <Divider />
-
         <CardBody>
           <Form
             className="w-full max-w-xs"
@@ -60,9 +67,7 @@ export default function SignUp({ onSubmit }) {
             </Button>
           </Form>
         </CardBody>
-
         <Divider />
-
         <CardFooter>
           <Link
             isExternal
