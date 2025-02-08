@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/SignUp.jsx"
+    "components/SignUp.jsx",
+    "components/Messages/Chat.jsx"
   ],
   "exclude": ["node_modules"]
 }
