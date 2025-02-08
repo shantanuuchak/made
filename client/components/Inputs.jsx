@@ -18,7 +18,10 @@ function Inputs({ user, socket, setMessages }) {
 
         const msg = {
           type: "image",
-          user: user,
+          user: {
+            id: socket.id,
+            name: user,
+          },
           content: base64,
         };
 
@@ -36,7 +39,10 @@ function Inputs({ user, socket, setMessages }) {
     } else {
       const msg = {
         type: "text",
-        user: user,
+        user: {
+          id: socket.id,
+          name: user,
+        },
         content: input,
       };
 

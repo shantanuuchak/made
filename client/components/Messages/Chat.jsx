@@ -1,32 +1,33 @@
-import { Avatar, Card, CardBody } from "@heroui/react";
+import { Avatar, Card, CardBody, Image } from "@heroui/react";
 import NewUser from "./NewUser";
 
 function Chat({ messages, socket }) {
   return (
     <div className="grid gap-2">
-      <Message>
-        Make beautiful websites regardless of your design experience.
-      </Message>
-      <Message self>
-        Make beautiful websites regardless of your design experience.
-      </Message>
-      <Message self>Please go and find yourself a job.</Message>
-      <Message>Whatever you tell me I'm not into such business.</Message>
-      <Message>Whatever you tell me I'm not into such business.</Message>
-      <NewUser name="Ben 10" />
-      <Message>Whatever you tell me I'm not into such business.</Message>
-      <Message self>Please go and find yourself a job.</Message>
-      <Message self>Please go and find yourself a job.</Message>
+      {messages.map((message, index) => (
+        <Message
+          key={index}
+          type={message.type}
+          content={message.content}
+          name={message.user.name.toUpperCase().split(" ")[0]}
+          self={socket.id === message.user.id}
+        />
+      ))}
     </div>
   );
 }
 
-function Message({ children, self }) {
+function Message({ type, content, self, name }) {
+  console.log(content);
   return (
     <Card className={`w-fit bg-transparent ${self && "bg-blue-100 ml-auto"}`}>
       <CardBody className="flex items-center flex-row gap-2">
-        {!self && <Avatar name="June Rishab" className="inline-block" />}{" "}
-        <p>{children}</p>
+        {!self && <Avatar name={name} className="inline-block" />}
+        {type === "text" ? (
+          <p>{content}</p>
+        ) : (
+          <Image alt="Image message" src={content} width={300} />
+        )}
       </CardBody>
     </Card>
   );
