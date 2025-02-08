@@ -1,9 +1,19 @@
+import { useRef, useEffect } from "react";
 import { Avatar, Card, CardBody, Image } from "@heroui/react";
 import NewUser from "./NewUser";
 
 function Message({ messages, socket, newUsers }) {
+  const messagesEndRef = useRef(null);
+
+  // Auto-scroll to the bottom when new messages are received
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
-    <div className="grid gap-2">
+    <div className="grid gap-2 max-h-[80vh] overflow-scroll scroll-smooth scrollbar-hidden">
       {messages.map((message, idx) => (
         <Chat
           key={idx}
@@ -15,7 +25,8 @@ function Message({ messages, socket, newUsers }) {
       ))}
       {newUsers.map((user, idx) => (
         <NewUser key={idx} name={user} />
-      ))}
+      ))}{" "}
+      <div ref={messagesEndRef} />
     </div>
   );
 }
