@@ -13,7 +13,7 @@ function Message({ messages, socket, newUsers }) {
   }, [messages]);
 
   return (
-    <div className="grid gap-2 max-h-[80vh] overflow-scroll scroll-smooth scrollbar-hidden">
+    <div className="grid gap-2 max-h-[85vh] overflow-scroll scroll-smooth scrollbar-hidden p-5">
       {messages.map((message, idx) => (
         <Chat
           key={idx}
@@ -25,7 +25,7 @@ function Message({ messages, socket, newUsers }) {
       ))}
       {newUsers.map((user, idx) => (
         <NewUser key={idx} name={user} />
-      ))}{" "}
+      ))}
       <div ref={messagesEndRef} />
     </div>
   );
