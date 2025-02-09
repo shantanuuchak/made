@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { HeroUIProvider } from "@heroui/react";
 import { Chat, Inputs, SignUp } from "@/components";
 
-const socket = io("http://madeapp.koyeb.app");
+const socket = io("https://madeapp.koyeb.app");
 
 export default function Home() {
   const [user, setUser] = useState("");
